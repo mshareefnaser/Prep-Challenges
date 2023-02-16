@@ -1,0 +1,184 @@
+'use strict';
+
+// Important Note:
+// Kindly use forEach loop instead of for in all of your solutions
+
+// Resource:
+// forEach: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+
+// -------------------------------------------------------------------------------------------------------
+// Challenge 01:
+// Required:
+
+//  Write a function that takes an array of numbers and increase the values by 10
+//  
+//  Input:
+//  [20, 54, 89, 41]
+//  Output:
+//  [30, 64, 99, 51]
+//  
+
+const arrInc = (arr) => {
+    let result = [];
+    // write your code here
+    arr.forEach(increaseValue);
+    function increaseValue(item) {
+        item += 10;
+        result.push(item);
+    }
+    return result;
+}
+// -------------------------------------------------------------------------------------------------------
+
+
+// -------------------------------------------------------------------------------------------------------
+// Challenge 02:
+// optional: 
+
+//  Write a function that takes an array of decimals and round every value to the closest value 
+//  
+//  Input:
+//  [5.4, 5.5 ,6.7, 6.8] 
+//  Output:
+//  [5, 6, 7, 7]
+// 
+const roundDecimals = (arr) => {
+    // write your code here
+    arr.forEach((item, index) => {
+        let roundedValue = Math.round(item);
+        arr[index] = roundedValue;
+    });
+    return arr;
+}
+// -------------------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------------------------------
+// Challenge 03:
+// optional:
+// 
+// An owner of a factory wants to give a 100$ bonus for production department employees who worked *More than* 8 hours
+// and 50$ for those who worked less, given their data increase their salary and return the data back again 
+//  
+// Input:
+// let data = [
+//     {
+//         name: "Robert",
+//         section: "Transport",
+//         workHours: 8,
+//         salary: "3000$"
+//     },
+//     {
+//         name: "Richard",
+//         section: "HR",
+//         workHours: 6,
+//         salary: "4000$"
+//     },
+//     {
+//         name: "Christopher",
+//         section: "Production",
+//         workHours: 10,
+//         salary: "4500$"
+//     },
+//     {
+//         name: "Andrew",
+//         section: "HouseKeeping",
+//         workHours: 9,
+//         salary: "3200$"
+//     }
+// ]
+// 
+// Output:
+// [
+//     {
+//         name: "Robert",
+//         section: "Transport",
+//         workHours: 8,
+//         salary: "3050$"
+//     },
+//     {
+//         name: "Richard",
+//         section: "HR",
+//         workHours: 6,
+//         salary: "4050$"
+//     },
+//     {
+//         name: "Christopher",
+//         section: "Production",
+//         workHours: 10
+//         salary: "4600$"
+//     },
+//     {
+//         name: "Andrew",
+//         section: "HouseKeeping",
+//         workHours: 9,
+//         salary: "3300$"
+//     }
+// ]
+//
+
+const employeesBonus = (arr) => {
+    // write your code here
+    arr.forEach(item => {
+        if (item['workHours'] > 8) {
+            let salaryValue = parseInt(item['salary'].slice(0, -1)) + 100;
+            item['salary'] = `${salaryValue}$`;
+        }
+        else {
+            let salaryValue = parseInt(item['salary'].slice(0, -1)) + 50;
+            item['salary'] = `${salaryValue}$`;
+        }
+    });
+
+    return arr;
+}
+// -------------------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------------------------------------
+// Challenge 04:
+// Optional:
+//
+// Harry wants to buy a new mouse and keyboard for his new setup
+// He wants to choose one mouse and one keyboard from the list of prices and take the most expensive combination
+// but his budget is limited, help him by finding the most expensive *price* for a combination to buy with his budget
+// 
+// Input:
+// budget = 200$
+// mouseArray = [35, 15, 75, 180, 150, 50]
+// keyBoardArray = [5, 150, 35, 120, 75, 50, 100]
+// 
+// Output: 200
+
+function mostExpensive(budget, mouseArray, keyBoardArray) {
+    let price = 0;
+    mouseArray = sortArray(mouseArray);
+    keyBoardArray = sortArray(keyBoardArray);
+    for (let i = 0; i < mouseArray.length; i++) {
+      for (let x = 0; x < keyBoardArray.length; x++) {
+        const combinationPrice = mouseArray[i] + keyBoardArray[x];
+        if (combinationPrice <= budget && combinationPrice > price) {
+          price = combinationPrice;
+        }
+      }
+    }
+    return price;
+  }
+  
+function sortArray(arr) {
+    const arrLength = arr.length;
+    for (let i = 0; i < arrLength; i++) {
+        for (let x = 0; x < arrLength - 1; x++)
+         {
+            if (arr[x] > arr[x + 1]) 
+            {
+                const temp = arr[x];
+                arr[x] = arr[x + 1];
+                arr[x + 1] = temp;
+            }
+        }
+        return arr;
+
+    }
+}
+    // -------------------------------------------------------------------------------------------------------
+
+    module.exports = { arrInc, roundDecimals, employeesBonus, mostExpensive };

@@ -18,6 +18,9 @@
 
 function square(arr) {
     // write your code here
+    let result=arr.map((number) => {
+        return number * number;});
+    return result;
 }
 // -------------------------------------------------------------------------------------------------------
 
@@ -57,6 +60,8 @@ function square(arr) {
 
 function fullName(arr) {
     // write your code here
+    let result = arr.map((obj) => {return obj.firstName+" "+obj.lastName});
+    return result;
 }
 // -------------------------------------------------------------------------------------------------------
 

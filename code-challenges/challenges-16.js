@@ -57,6 +57,11 @@ const detectFace = (arr) => {
 
 const eveCharacter = (str) => {
     //write your code here ...
+    let letters=str.split('');
+    let evenLetters=letters.filter((letter, index)=>{
+        return index%2==0;
+    })
+    return evenLetters.join('');
 }
 // -------------------------------------------------------------------------------------------------------
 
@@ -78,6 +83,11 @@ const eveCharacter = (str) => {
 
 const chickenGradients = (arr) => {
     //write your code here ...
+    let result=arr.map((tabeekh)=>
+    tabeekh.filter((ingredient)=>{return ingredient.includes('chicken')})
+    )
+    return result;
+    
 }
 // -------------------------------------------------------------------------------------------------------
 

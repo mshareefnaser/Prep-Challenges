@@ -19,7 +19,7 @@ describe('Challenge16-02', () => {
 })
 
 describe('Challenge16-03', () => {
-    test.skip('Even characters', () => {
+    test('Even characters', () => {
         let input = "coding";
         let output = "cdn"
 
@@ -27,7 +27,7 @@ describe('Challenge16-03', () => {
     })
 })
 
-describe.skip('Challenge16-04', () => {
+describe('Challenge16-04', () => {
     test('Chicken Gradients', () => {
         let input = [["mushroom", "grilled chicken", "sauce"], ["Bread", "Potato", "baked chicken"], ["fried potato", "garlic sauce", "fried chicken"]];;
         let output = [["grilled chicken"], ["baked chicken"], ["fried chicken"]]

@@ -16,7 +16,10 @@
 
 const recursionPattern = (int1, int2) => {
     // write your code here
+    
 }
+
+    
 // -------------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------------------------
@@ -35,6 +38,12 @@ const recursionPattern = (int1, int2) => {
 
 const filterLinks = (str) => {
     // write your code here
+    const HTag=str.split("");
+    const startRange=HTag.indexOf('"');
+    const endRange=HTag.lastIndexOf('"');
+    let linkArr=HTag.slice(startRange+8,endRange);
+    let result = linkArr.join("");
+    return result;
 }
 // -------------------------------------------------------------------------------------------------------
 
@@ -54,6 +63,18 @@ const filterLinks = (str) => {
 
 const isPalindrome = (str) => {
     // write your code here
+    let lowerStr=str.toLowerCase();
+    let chars=lowerStr.split('');
+    let letters=chars.filter((letter)=>{
+    return letter.match(/[a-z]/i);
+    })
+    let length=Math.ceil(letters.length/2);
+    for (let i=0;i<length; i++)
+    {
+        if (letters[i]!=letters[letters.length-1-i])
+        return false;
+    }
+    return true;
 }
 // -------------------------------------------------------------------------------------------------------
 
@@ -78,6 +99,29 @@ const isPalindrome = (str) => {
 
 const samePattern = (str, arr) => {
     // write your code here
+    let pattern=str.split('');
+    let exisitingLetters=pattern.filter((letter,index)=>{
+        if (pattern.lastIndexOf(letter)==index)
+        return true;
+    })
+    let exisitingElements=arr.filter((element,index)=>{
+        if (arr.lastIndexOf(element)==index)
+        return true;
+    })
+  if (exisitingLetters.length !== exisitingElements.length)
+    return false;
+  
+    let pairs=exisitingElements.map((elem,index)=>{
+        return {"element":elem,"letter":exisitingLetters[index]};
+    })
+    let idx=0;
+    for (let i=0; i<pattern.length; i++)
+    {
+        idx=exisitingLetters.indexOf(pattern[i]);
+        if (pattern[i]!=pairs[idx].letter)
+        return false;
+    }
+    return true;
 }
 // -------------------------------------------------------------------------------------------------------
 

@@ -16,10 +16,27 @@
 
 const recursionPattern = (int1, int2) => {
     // write your code here
-    
-}
-
-    
+    let arr=[];
+    sub(int1,int2);
+    add(arr[arr.length-1],int2)
+    function sub(int1,int2)
+    {
+        arr.push (int1);
+        if (int1<0)
+        return arr;
+        else return sub(int1-int2,int2);
+    }
+    function add(int1,int2)
+    {
+        if ((int1>0)&&(int1<=arr[0]))
+        arr.push (int1);
+        if (int1==arr[0])
+        return arr;
+        else return add(int1+int2,int2);
+    }
+    return arr;
+};
+        
 // -------------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------------------------

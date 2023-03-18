@@ -24,7 +24,7 @@
         {
             "language": "javascript",
             "source": [
-                ""
+                "function appendAndDelete(s, t, k) {\n    let sArr = s.split('');\n    let tArr = t.split('');\n    let commonChars = 0;\n    \n    for (let i = 0; i < Math.min(sArr.length, tArr.length); i++) {\n        if (sArr[i] === tArr[i]) {\n            commonChars++;\n        } else {\n            break;\n        }\n    }\n    \n    let moves = sArr.length + tArr.length - 2 * commonChars;\n    \n    if (moves <= k && (k - moves) % 2 === 0 || k >= sArr.length + tArr.length) {\n        return 'Yes';\n    } else {\n        return 'No';\n    }\n}"
             ],
             "outputs": []
         },
